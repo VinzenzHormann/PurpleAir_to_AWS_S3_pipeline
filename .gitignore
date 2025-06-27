@@ -1,0 +1,45 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+.venv/
+venv/
+pip-log.txt
+pip-delete-this-arg-files.txt
+.tox/
+.poetry/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+
+# IDE-specific files
+.idea/             # JetBrains IDEs (PyCharm, IntelliJ)
+.vscode/           # VS Code settings (consider if you need to commit shared settings)
+*.swp
+*.bak
+*.swo
+
+# Operating System files
+.DS_Store          # macOS
+Thumbs.db          # Windows
+
+# AWS Lambda Deployment Artifacts
+function_code.zip
+your_custom_layer.zip # Or any other layer zip files you might create
+output.json           # Output from 'aws lambda invoke'
+
+# Local data / Logs (if you generate any during testing)
+*.csv
+*.parquet
+*.log
+data/              # If you ever create a 'data' folder locally for testing, ignore it
+
+# Sensitive information / Environment variables
+.env               # Common file for local environment variables
+*.env              # Catch other .env files like .env.development
+config.ini         # If you put sensitive info here (better for non-sensitive config)
+credentials.json   # If you use Google Cloud service account keys locally (highly recommended to avoid committing)
