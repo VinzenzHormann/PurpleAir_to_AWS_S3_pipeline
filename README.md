@@ -13,7 +13,7 @@ The current data source is a pre-set PurpleAir sensor located in Ankara, Turkey.
 * **Data Transformation & Validation:** Cleanses, unpacks, and validates raw sensor readings.
 * **Optimized Data Storage:** Stores data in AWS S3 using the efficient **Parquet format** and **time-based partitioning**.
 
-## 💡 My Learning Journey
+## My Learning Journey
 
 Having previously gained experience simulating environmental data and loading it into Google Cloud Platform (GCP), I embarked on this project to gain hands-on experience with:
 
@@ -23,7 +23,7 @@ Having previously gained experience simulating environmental data and loading it
 * **Mastering AWS Lambda Layers:** Overcoming significant challenges in packaging and deploying complex Python libraries with native components (like `pyarrow`) to Lambda's Linux runtime environment. This was a particularly valuable and challenging learning experience, involving understanding environment variables, timeouts, memory, and debugging deployment issues.
 * **Implementing Data Lake Best Practices:** Gaining practical experience with columnar storage (Parquet) and data partitioning for optimized querying and cost efficiency.
 
-## 🏗️ Project Architecture and Data Flow
+## Project Architecture and Data Flow
 
 The pipeline is designed for scheduled execution, ensuring continuous collection of air quality and associated environmental data.
 
@@ -41,10 +41,6 @@ The pipeline is designed for scheduled execution, ensuring continuous collection
 5.  **Data Enrichment:** Adds `ingestion_timestamp_iso_utc` and `ingestion_timestamp_unix_utc` columns to track when the data was ingested into the pipeline.
 6.  **Data Storage (`lambda_handler`):** The processed DataFrame is converted into Parquet format and uploaded to the designated AWS S3 data lake bucket with a `YYYY/MM/DD` partitioning scheme.
 
-+--------------------------+     +-------------------------------+     +------------------+     +---------------------+     +--------------------------+
-| AWS EventBridge          | --> | AWS Lambda Function           | --> | PurpleAir API    | --> | AWS Lambda Function | --> | AWS S3 Data Lake         |
-| (Scheduled Trigger)      |     | (purpleair-ingest-function)   |     | (Data Fetch)     |     | (Processing)        |     | (Parquet, /YYYY/MM/DD/)  |
-+--------------------------+     +-------------------------------+     +------------------+     +---------------------+     +--------------------------+
 
 ##  AWS Implementation Details
 
